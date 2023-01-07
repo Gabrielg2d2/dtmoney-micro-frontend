@@ -1,3 +1,10 @@
-export default function Root(props) {
-  return <section>{props.name} is mounted! Dtmoney</section>;
+import { BrowserRouter } from "react-router-dom";
+import RoutesApp from "./routes";
+
+export default function Root() {
+  return (
+    <BrowserRouter>
+      <RoutesApp />
+    </BrowserRouter>
+  );
 }
