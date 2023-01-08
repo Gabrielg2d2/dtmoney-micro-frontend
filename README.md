@@ -7,6 +7,10 @@ Project is on a micro-frontend architecture with "Single-SPA" in React.
 
 ## Domain
 
+- Transactions
+
+## Sub domains
+
 ### add new transaction
 
 - Name transaction
