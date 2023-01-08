@@ -1,9 +1,9 @@
-import {
-  IListTransactions,
-  ListTransactionsReturn,
-} from "../../../../domain/transaction/use-cases/list-transactions";
+import { IListTransactions } from "../../../../domain/transaction/use-cases/list-transactions";
+import { ListTransactionsReturn } from "../../../../domain/transaction/use-cases/list-transactions/model";
 
-type MethodGetTransactions = (url: string) => Promise<ListTransactionsReturn>;
+export type MethodGetTransactions = (
+  url: string
+) => Promise<ListTransactionsReturn>;
 
 export class ListTransactions implements IListTransactions {
   constructor(
