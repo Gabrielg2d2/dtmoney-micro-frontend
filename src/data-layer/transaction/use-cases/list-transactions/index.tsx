@@ -12,8 +12,15 @@ export class ListTransactions implements IListTransactions {
   ) {}
 
   async execute() {
-    const response = await this.methodGet(this.url);
+    try {
+      const response = await this.methodGet(this.url);
 
-    return response;
+      return response;
+    } catch (error) {
+      return {
+        status: 400,
+        data: [],
+      };
+    }
   }
 }

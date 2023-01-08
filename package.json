@@ -14,7 +14,8 @@
     "test:watch": "cross-env BABEL_ENV=test jest --watch",
     "prepare": "husky install",
     "coverage": "cross-env BABEL_ENV=test jest --coverage",
-    "build:types": "tsc"
+    "build:types": "tsc",
+    "server": "json-server --watch ./data/db.json --port 3333"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",

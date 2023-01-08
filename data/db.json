@@ -1,0 +1,11 @@
+{
+  "transactions": [
+    {
+      "id": "any_id",
+      "name": "any_name",
+      "price": 10,
+      "type": "any_type",
+      "category": "any_category"
+    }
+  ]
+}
