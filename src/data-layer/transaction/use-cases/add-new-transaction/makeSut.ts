@@ -2,7 +2,7 @@ import { AddNewTransaction } from ".";
 
 type SutTypes = {
   url?: string;
-  methodPost?: any;
+  methodPost?: jest.Mock;
   status?: number;
 };
 

@@ -20,11 +20,11 @@ export class UpdateNewTransactions implements IUpdateNewTransaction {
   ) {}
 
   async put(data: UpdateNewTransactionParams) {
-    const status = await this.methodPut({
+    const response = await this.methodPut({
       url: this.url,
       body: data,
     });
 
-    return status;
+    return response;
   }
 }
