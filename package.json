@@ -10,6 +10,7 @@
     "format": "prettier --write .",
     "check-format": "prettier --check .",
     "test": "cross-env BABEL_ENV=test jest",
+    "test:ci": "cross-env BABEL_ENV=test jest --coverage",
     "test:watch": "cross-env BABEL_ENV=test jest --watch",
     "prepare": "husky install",
     "coverage": "cross-env BABEL_ENV=test jest --coverage",
