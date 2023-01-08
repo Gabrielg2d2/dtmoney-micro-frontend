@@ -1,8 +1,8 @@
 import {
   IUpdateNewTransaction,
   UpdateNewTransactionParams,
-} from "../../../../domain/transaction/use-cases/update-new-transaction";
-import { UpdateNewTransactionResult } from "../../../../domain/transaction/use-cases/update-new-transaction/model";
+} from "../../../../domain/transaction/use-cases/update-transaction";
+import { UpdateNewTransactionResult } from "../../../../domain/transaction/use-cases/update-transaction/model";
 
 type MethodPutParams = {
   url: string;
