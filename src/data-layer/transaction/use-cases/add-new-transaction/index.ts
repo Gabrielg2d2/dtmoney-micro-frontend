@@ -9,12 +9,14 @@ type MethodPostParams = {
   body: AddNewTransactionParams;
 };
 
+type MethodPost = (
+  params: MethodPostParams
+) => Promise<AddNewTransactionResult>;
+
 export class AddNewTransaction implements IAddNewTransaction {
   constructor(
     private readonly url: string,
-    private readonly methodPost: (
-      params: MethodPostParams
-    ) => Promise<AddNewTransactionResult>
+    private readonly methodPost: MethodPost
   ) {}
 
   async add(data: AddNewTransactionParams): Promise<AddNewTransactionResult> {
