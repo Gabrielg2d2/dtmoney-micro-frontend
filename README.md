@@ -30,7 +30,7 @@ Project is on a micro-frontend architecture with "Single-SPA" in React.
 - Deposit / Withdrawal
 - Category
 
-### List transactions
+### list transactions
 
 - id transaction
 - Name transaction
@@ -39,14 +39,14 @@ Project is on a micro-frontend architecture with "Single-SPA" in React.
 - Category
 - Date transaction
 
-### Total incoming transactions
+### total incoming transactions
 
 - number (total)
 
-### Total outgoing transactions
+### total outgoing transactions
 
 - number (total)
 
-### Total transactions
+### total transactions
 
 - number (total)
