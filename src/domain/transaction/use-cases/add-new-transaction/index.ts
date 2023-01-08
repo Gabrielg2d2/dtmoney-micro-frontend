@@ -3,7 +3,7 @@ import { AddNewTransactionResult } from "./model";
 export type AddNewTransactionParams = {
   name: string;
   price: number;
-  type: "deposit" | "withdraw";
+  type: string;
   category: string;
 };
 
