@@ -3,7 +3,7 @@
 Project aims to study DDD, domain driven design for the front end.
 Project is on a micro-frontend architecture with "Single-SPA" in React.
 
-#Javascript #React #Single-SPA #Micro-frontend #DDD #SOLID
+#Javascript #React #Single-SPA #Micro-frontend #DDD #SOLID #System-Under-Test
 
 ## Domain
 
