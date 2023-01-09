@@ -164,3 +164,42 @@ describe("Transaction - Remove", () => {
     expect(response.status).toEqual(400);
   });
 });
+
+describe("Transaction - Update", () => {
+  it("should update a transaction", async () => {
+    const mainTransaction = new MainTransaction();
+    const mainSpy = jest.spyOn(mainTransaction, "handleUpdateTransaction");
+
+    mainSpy.mockResolvedValueOnce({
+      status: 200,
+      data: data_transactions_mock,
+    });
+
+    const response = await mainTransaction.handleUpdateTransaction(
+      "any_id",
+      data_transactions_mock[0]
+    );
+
+    expect(mainSpy).toHaveBeenCalledTimes(1);
+    expect(mainTransaction.handleUpdateTransaction).toHaveBeenCalledTimes(1);
+
+    expect(response.status).toEqual(200);
+  });
+
+  it("should return status 400 when any error occurs when updating", async () => {
+    const mainTransaction = new MainTransaction();
+    const mainSpy = jest.spyOn(mainTransaction, "handleUpdateTransaction");
+
+    mainSpy.mockResolvedValueOnce({
+      status: 400,
+      data: [],
+    });
+
+    const response = await mainTransaction.handleUpdateTransaction(
+      "any_id",
+      data_transactions_mock[0]
+    );
+
+    expect(response.status).toEqual(400);
+  });
+});
