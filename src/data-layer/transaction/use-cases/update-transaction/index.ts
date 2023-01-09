@@ -4,13 +4,9 @@ import {
 } from "../../../../domain/transaction/use-cases/update-transaction";
 import { UpdateNewTransactionResult } from "../../../../domain/transaction/use-cases/update-transaction/model";
 
-type MethodPutParams = {
-  url: string;
-  body: UpdateNewTransactionParams;
-};
-
 type MethodPut = (
-  params: MethodPutParams
+  url: string,
+  body: UpdateNewTransactionParams
 ) => Promise<UpdateNewTransactionResult>;
 
 export class UpdateNewTransactions implements IUpdateNewTransaction {
@@ -19,12 +15,16 @@ export class UpdateNewTransactions implements IUpdateNewTransaction {
     private readonly methodPut: MethodPut
   ) {}
 
-  async put(data: UpdateNewTransactionParams) {
-    const response = await this.methodPut({
-      url: this.url,
-      body: data,
-    });
+  async put(body: UpdateNewTransactionParams) {
+    try {
+      const response = await this.methodPut(this.url, body);
 
-    return response;
+      return response;
+    } catch (error) {
+      return {
+        status: 400,
+        data: [],
+      };
+    }
   }
 }
