@@ -1,11 +1,7 @@
+import { TransactionData } from "../../types/global/transactions";
 import { UpdateNewTransactionResult } from "./model";
 
-export type UpdateNewTransactionParams = {
-  name: string;
-  amount: number;
-  type: string;
-  category: string;
-};
+export type UpdateNewTransactionParams = TransactionData;
 
 export interface IUpdateNewTransaction {
   put: (

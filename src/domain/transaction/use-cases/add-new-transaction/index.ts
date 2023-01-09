@@ -1,11 +1,7 @@
+import { TransactionData } from "../../types/global/transactions";
 import { AddNewTransactionReturn } from "./model";
 
-export type AddNewTransactionParams = {
-  name: string;
-  amount: number;
-  type: string;
-  category: string;
-};
+export type AddNewTransactionParams = TransactionData;
 
 export interface IAddNewTransaction {
   add: (data: AddNewTransactionParams) => Promise<AddNewTransactionReturn>;
