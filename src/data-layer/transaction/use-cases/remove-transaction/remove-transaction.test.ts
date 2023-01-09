@@ -5,22 +5,34 @@ describe("RemoveTransaction", () => {
     const { sut, methodDeleteTransactionSpy, urlSpy, transactionIdSpy } =
       makeSutDeleteTransaction();
 
-    sut.removeTransaction({ url: urlSpy, transactionId: transactionIdSpy });
+    const urlDelete = `${urlSpy}/${transactionIdSpy}`;
 
-    expect(methodDeleteTransactionSpy).toHaveBeenCalledWith(
-      urlSpy,
-      transactionIdSpy
-    );
+    await sut.removeTransaction(urlDelete);
+
+    expect(methodDeleteTransactionSpy).toHaveBeenCalledWith(urlDelete);
   });
 
   it("should return promise status 200", async () => {
     const { sut, urlSpy, transactionIdSpy } = makeSutDeleteTransaction();
 
-    const response = await sut.removeTransaction({
-      url: urlSpy,
-      transactionId: transactionIdSpy,
-    });
+    const urlDelete = `${urlSpy}/${transactionIdSpy}`;
+
+    const response = await sut.removeTransaction(urlDelete);
 
     expect(response.status).toBe(200);
+  });
+
+  it("it should return status 400 even when there is an error in the api, it does not display status 500 to the user", async () => {
+    const { sut, urlSpy, transactionIdSpy } = makeSutDeleteTransaction({
+      methodDeleteTransactionSpy: () => {
+        throw new Error();
+      },
+    });
+
+    const urlDelete = `${urlSpy}/${transactionIdSpy}`;
+
+    const response = await sut.removeTransaction(urlDelete);
+
+    expect(response.status).toBe(400);
   });
 });

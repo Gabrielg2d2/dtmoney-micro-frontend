@@ -1,5 +1,9 @@
 import { api } from "../../../service/api";
-import { ListTransactions, AddNewTransaction } from "../use-cases";
+import {
+  ListTransactions,
+  AddNewTransaction,
+  RemoveTransaction,
+} from "../use-cases";
 
 export type TransactionProps = {
   name: string;
@@ -25,6 +29,26 @@ export class MainTransaction {
     const response = await addNewTransaction.add(data);
 
     if (response.status === 201) {
+      const responseUpdateListTransaction = await this.handleListTransactions();
+      return {
+        status: response.status,
+        data: responseUpdateListTransaction.data,
+      };
+    }
+
+    return {
+      status: 400,
+      data: [],
+    };
+  }
+
+  async handleDeleteTransaction(id: string) {
+    const deleteTransaction = new RemoveTransaction(api.delete);
+    const urlDelete = `${this.url}/${id}`;
+
+    const response = await deleteTransaction.removeTransaction(urlDelete);
+
+    if (response.status === 200) {
       const responseUpdateListTransaction = await this.handleListTransactions();
       return {
         status: response.status,

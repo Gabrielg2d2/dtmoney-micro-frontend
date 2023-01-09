@@ -1,12 +1,8 @@
-import {
-  IRemoveTransaction,
-  RemoveTransactionParams,
-} from "../../../../domain/transaction/use-cases/remove-transaction";
+import { IRemoveTransaction } from "../../../../domain/transaction/use-cases/remove-transaction";
 import { RemoveTransactionResult } from "../../../../domain/transaction/use-cases/remove-transaction/model";
 
 type MethodDeleteTransaction = (
-  url: string,
-  transactionId: string
+  url: string
 ) => Promise<RemoveTransactionResult>;
 
 export class RemoveTransaction implements IRemoveTransaction {
@@ -14,8 +10,15 @@ export class RemoveTransaction implements IRemoveTransaction {
     private readonly methodDeleteTransaction: MethodDeleteTransaction
   ) {}
 
-  async removeTransaction({ url, transactionId }: RemoveTransactionParams) {
-    const response = await this.methodDeleteTransaction(url, transactionId);
-    return response;
+  async removeTransaction(url: string) {
+    try {
+      const response = await this.methodDeleteTransaction(url);
+      return response;
+    } catch (error) {
+      return {
+        status: 400,
+        data: [],
+      };
+    }
   }
 }
