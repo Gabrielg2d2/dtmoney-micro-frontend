@@ -127,3 +127,40 @@ describe("Transaction - Create", () => {
     expect(response.status).toEqual(201);
   });
 });
+
+describe("Transaction - Remove", () => {
+  afterEach(() => {
+    cleanup();
+  });
+
+  it("should delete a transaction", async () => {
+    const mainTransaction = new MainTransaction();
+    const mainSpy = jest.spyOn(mainTransaction, "handleDeleteTransaction");
+
+    mainSpy.mockResolvedValueOnce({
+      status: 200,
+      data: data_transactions_mock,
+    });
+
+    const response = await mainTransaction.handleDeleteTransaction("any_id");
+
+    expect(mainSpy).toHaveBeenCalledTimes(1);
+    expect(mainTransaction.handleDeleteTransaction).toHaveBeenCalledTimes(1);
+
+    expect(response.status).toEqual(200);
+  });
+
+  it("it should return status 400 when any error occurs when deleting", async () => {
+    const mainTransaction = new MainTransaction();
+    const mainSpy = jest.spyOn(mainTransaction, "handleDeleteTransaction");
+
+    mainSpy.mockResolvedValueOnce({
+      status: 400,
+      data: [],
+    });
+
+    const response = await mainTransaction.handleDeleteTransaction("any_id");
+
+    expect(response.status).toEqual(400);
+  });
+});
