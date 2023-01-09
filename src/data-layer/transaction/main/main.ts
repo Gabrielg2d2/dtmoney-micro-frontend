@@ -24,9 +24,16 @@ export class MainTransaction {
     const response = await addNewTransaction.add(data);
 
     if (response.status !== 201) {
-      throw new Error("Error to create transaction");
+      const responseUpdateListTransaction = await this.handleListTransactions();
+      return {
+        status: response.status,
+        data: responseUpdateListTransaction.data,
+      };
     }
 
-    this.handleListTransactions();
+    return {
+      status: 400,
+      data: [],
+    };
   }
 }

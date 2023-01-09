@@ -1,4 +1,4 @@
-import { AddNewTransactionResult } from "./model";
+import { AddNewTransactionReturn } from "./model";
 
 export type AddNewTransactionParams = {
   name: string;
@@ -8,5 +8,5 @@ export type AddNewTransactionParams = {
 };
 
 export interface IAddNewTransaction {
-  add: (data: AddNewTransactionParams) => Promise<AddNewTransactionResult>;
+  add: (data: AddNewTransactionParams) => Promise<AddNewTransactionReturn>;
 }

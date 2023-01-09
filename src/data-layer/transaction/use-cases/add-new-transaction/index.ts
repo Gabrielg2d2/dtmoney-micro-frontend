@@ -15,9 +15,15 @@ export class AddNewTransaction implements IAddNewTransaction {
     private readonly methodPost: MethodPost
   ) {}
 
-  async add(data: AddNewTransactionParams) {
-    const response = await this.methodPost(this.url, data);
+  async add(body: AddNewTransactionParams) {
+    try {
+      const response = await this.methodPost(this.url, body);
 
-    return response;
+      return response;
+    } catch (error) {
+      return {
+        status: 400,
+      };
+    }
   }
 }
