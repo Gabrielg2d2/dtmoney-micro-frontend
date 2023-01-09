@@ -1,5 +1,5 @@
 import { api } from "../../../service/api";
-import { ListTransactions } from "../use-cases/list-transactions";
+import { ListTransactions } from "../use-cases";
 
 export class MainTransaction {
   handleListTransactions = async () => {
