@@ -9,7 +9,8 @@ export type TransactionProps = {
 };
 
 export class MainTransaction {
-  url = `${process.env.REACT_APP_API_URL}/transactions`;
+  // url = `${process.env.REACT_APP_API_URL}/transactions`;
+  url = `http://localhost:3333/transactions`;
 
   async handleListTransactions() {
     const listTransactions = new ListTransactions(this.url, api.get);
@@ -23,7 +24,7 @@ export class MainTransaction {
 
     const response = await addNewTransaction.add(data);
 
-    if (response.status !== 201) {
+    if (response.status === 201) {
       const responseUpdateListTransaction = await this.handleListTransactions();
       return {
         status: response.status,
