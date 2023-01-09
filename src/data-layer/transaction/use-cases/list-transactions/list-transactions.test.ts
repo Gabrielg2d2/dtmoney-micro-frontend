@@ -1,3 +1,4 @@
+import { isRouteErrorResponse } from "react-router-dom";
 import { makeSutListTransactions } from "./makeSut";
 
 describe("ListTransactions", () => {
@@ -37,6 +38,18 @@ describe("ListTransactions", () => {
 
     expect(response).toEqual({
       status: 400,
+      data: [],
+    });
+  });
+
+  it("should return status 500 for an error in the api call", async () => {
+    const { sut, methodGetSpy } = makeSutListTransactions();
+    methodGetSpy.mockRejectedValueOnce(new Error());
+
+    const response = await sut.execute();
+
+    expect(response).toEqual({
+      status: 500,
       data: [],
     });
   });

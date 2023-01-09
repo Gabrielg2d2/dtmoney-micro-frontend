@@ -18,7 +18,7 @@ export class ListTransactions implements IListTransactions {
       return response;
     } catch (error) {
       return {
-        status: 400,
+        status: 500,
         data: [],
       };
     }
