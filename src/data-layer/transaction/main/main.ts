@@ -14,8 +14,7 @@ export type TransactionProps = {
 };
 
 export class MainTransaction {
-  // url = `${process.env.REACT_APP_API_URL}/transactions`;
-  url = `http://localhost:3333/transactions`;
+  url = `${process.env.REACT_APP_API_URL}/transactions`;
 
   async handleListTransactions() {
     const listTransactions = new ListTransactions(this.url, api.get);
