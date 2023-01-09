@@ -8,21 +8,21 @@ describe("TotalIncomingTransactions", () => {
       {
         id: "1",
         name: "Salary",
-        type: "deposit",
+        type: "deposit", // <--- This is the only difference
         category: "Salary",
         amount: 1000,
       },
       {
         id: "2",
         name: "Salary",
-        type: "deposit",
+        type: "deposit", // <--- This is the only difference
         category: "Salary",
         amount: 1000,
       },
       {
         id: "3",
         name: "Salary",
-        type: "deposit",
+        type: "deposit", // <--- This is the only difference
         category: "Salary",
         amount: 1000,
       },
