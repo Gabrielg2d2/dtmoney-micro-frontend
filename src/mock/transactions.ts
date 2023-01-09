@@ -1,4 +1,4 @@
-export const data_transactions = [
+export const data_transactions_mock = [
   {
     id: "any_id",
     name: "any_name",

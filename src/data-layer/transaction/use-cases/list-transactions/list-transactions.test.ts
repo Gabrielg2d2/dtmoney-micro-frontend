@@ -19,7 +19,7 @@ describe("ListTransactions", () => {
           id: "any_id",
           name: "any_name",
           price: 10,
-          type: "any_type",
+          type: "deposit",
           category: "any_category",
         },
       ],
