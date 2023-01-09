@@ -2,7 +2,7 @@ import { AddNewTransactionResult } from "./model";
 
 export type AddNewTransactionParams = {
   name: string;
-  price: number;
+  amount: number;
   type: string;
   category: string;
 };

@@ -1,3 +1,3 @@
-export type AddNewTransactionResult = {
+export type AddNewTransactionReturn = {
   status: number;
 };

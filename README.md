@@ -14,7 +14,7 @@ Project is on a micro-frontend architecture with "Single-SPA" in React.
 ### add new transaction
 
 - Name transaction
-- Price
+- amount
 - type: Deposit / Withdrawal
 - Category
 
@@ -26,7 +26,7 @@ Project is on a micro-frontend architecture with "Single-SPA" in React.
 
 - id transaction
 - Name transaction
-- Price
+- amount
 - type: Deposit / Withdrawal
 - Category
 
@@ -34,7 +34,7 @@ Project is on a micro-frontend architecture with "Single-SPA" in React.
 
 - id transaction
 - Name transaction
-- Price
+- amount
 - type: Deposit / Withdrawal
 - Category
 - Date transaction

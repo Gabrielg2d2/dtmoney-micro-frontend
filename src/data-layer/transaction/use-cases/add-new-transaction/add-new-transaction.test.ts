@@ -6,10 +6,7 @@ describe("AddNewTransaction", () => {
 
     await sut.add(dataSpy);
 
-    expect(methodPostSpy).toHaveBeenCalledWith({
-      url: urlSpy,
-      body: dataSpy,
-    });
+    expect(methodPostSpy).toHaveBeenCalledWith(urlSpy, dataSpy);
   });
 
   it("should return promise status 200", async () => {

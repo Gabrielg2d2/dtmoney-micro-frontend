@@ -9,7 +9,7 @@ type SutTypes = {
 export const makeSutAddNewTransaction = (params?: SutTypes) => {
   const dataSpy = {
     name: "any_name",
-    price: 100,
+    amount: 100,
     type: "deposit",
     category: "any_category",
   };
