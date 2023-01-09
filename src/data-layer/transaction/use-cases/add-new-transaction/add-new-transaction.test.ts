@@ -28,4 +28,16 @@ describe("AddNewTransaction", () => {
 
     expect(response.status).toBe(400);
   });
+
+  it("should return promise status different 200 or 400", async () => {
+    const { sut, dataSpy } = makeSutAddNewTransaction({
+      methodPost: jest.fn().mockRejectedValue({
+        status: 500,
+      }),
+    });
+
+    const response = await sut.add(dataSpy);
+
+    expect(response.status).toBe(400);
+  });
 });
