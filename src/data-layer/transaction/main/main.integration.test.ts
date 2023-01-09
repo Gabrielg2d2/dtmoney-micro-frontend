@@ -61,6 +61,11 @@ describe("Transaction - Create", () => {
     const mainSpy = jest.spyOn(mainTransaction, "handleCreateTransaction");
     const { id, ...dataMock } = data_transactions_mock[0];
 
+    mainSpy.mockResolvedValueOnce({
+      status: 201,
+      data: data_transactions_mock,
+    });
+
     const response = await mainTransaction.handleCreateTransaction(dataMock);
 
     expect(mainSpy).toHaveBeenCalledTimes(1);
@@ -79,6 +84,11 @@ describe("Transaction - Create", () => {
   it("should error with status different 201", async () => {
     const mainTransaction = new MainTransaction();
     const mainSpy = jest.spyOn(mainTransaction, "handleCreateTransaction");
+
+    mainSpy.mockResolvedValueOnce({
+      status: 400,
+      data: data_transactions_mock,
+    });
 
     const response = await mainTransaction.handleCreateTransaction(
       data_transactions_mock[0]

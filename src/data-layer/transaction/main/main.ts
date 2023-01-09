@@ -23,7 +23,7 @@ export class MainTransaction {
 
     const response = await addNewTransaction.add(data);
 
-    if (response.status === 201) {
+    if (response.status !== 201) {
       const responseUpdateListTransaction = await this.handleListTransactions();
       return {
         status: response.status,
