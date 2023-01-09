@@ -1,11 +1,11 @@
 {
   "transactions": [
     {
-      "id": "any_id",
       "name": "any_name",
-      "amount": 10,
+      "amount": 350,
       "type": "deposit",
-      "category": "any_category"
+      "category": "any_category",
+      "id": "any_id"
     }
   ]
 }

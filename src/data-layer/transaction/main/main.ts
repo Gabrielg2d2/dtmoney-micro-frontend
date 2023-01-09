@@ -3,6 +3,7 @@ import {
   ListTransactions,
   AddNewTransaction,
   RemoveTransaction,
+  UpdateNewTransactions,
 } from "../use-cases";
 
 export type TransactionProps = {
@@ -47,6 +48,32 @@ export class MainTransaction {
     const urlDelete = `${this.url}/${id}`;
 
     const response = await deleteTransaction.removeTransaction(urlDelete);
+
+    if (response.status === 200) {
+      const responseUpdateListTransaction = await this.handleListTransactions();
+      return {
+        status: response.status,
+        data: responseUpdateListTransaction.data,
+      };
+    }
+
+    return {
+      status: 400,
+      data: [],
+    };
+  }
+
+  async handleUpdateTransaction(id: string, body: TransactionProps) {
+    const urlUpdate = `${this.url}/${id}`;
+    const updateTransaction = new UpdateNewTransactions(urlUpdate, api.put);
+    const mainSpy = jest.spyOn(updateTransaction, "put");
+
+    mainSpy.mockResolvedValue({
+      status: 200,
+      data: [],
+    });
+
+    const response = await updateTransaction.put(body);
 
     if (response.status === 200) {
       const responseUpdateListTransaction = await this.handleListTransactions();
