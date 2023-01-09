@@ -56,6 +56,9 @@ describe("Transaction - List", () => {
 });
 
 describe("Transaction - Create", () => {
+  afterEach(() => {
+    cleanup();
+  });
   it("should add a new transaction", async () => {
     const mainTransaction = new MainTransaction();
     const mainSpy = jest.spyOn(mainTransaction, "handleCreateTransaction");
