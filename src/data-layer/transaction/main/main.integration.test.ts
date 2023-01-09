@@ -4,9 +4,9 @@ import { data_transactions_mock } from "../../../mock/transactions";
 describe("Transaction", () => {
   it("should spy on the handleListTransactions function, and inject the mock", async () => {
     const mainTransaction = new MainTransaction();
-    const apiGetSpy = jest.spyOn(mainTransaction, "handleListTransactions");
+    const mainSpy = jest.spyOn(mainTransaction, "handleListTransactions");
 
-    apiGetSpy.mockResolvedValueOnce({
+    mainSpy.mockResolvedValueOnce({
       status: 200,
       data: data_transactions_mock,
     });
@@ -36,15 +36,16 @@ describe("Transaction", () => {
 
   it("should call the function only once", async () => {
     const mainTransaction = new MainTransaction();
-    const apiGetSpy = jest.spyOn(mainTransaction, "handleListTransactions");
+    const mainSpy = jest.spyOn(mainTransaction, "handleListTransactions");
 
-    apiGetSpy.mockResolvedValueOnce({
+    mainSpy.mockResolvedValueOnce({
       status: 200,
       data: data_transactions_mock,
     });
 
     await mainTransaction.handleListTransactions();
 
-    expect(apiGetSpy).toHaveBeenCalledTimes(1);
+    expect(mainSpy).toHaveBeenCalledTimes(1);
+    expect(mainTransaction.handleListTransactions).toHaveBeenCalledTimes(1);
   });
 });

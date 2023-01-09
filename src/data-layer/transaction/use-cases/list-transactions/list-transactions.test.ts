@@ -1,4 +1,3 @@
-import { isRouteErrorResponse } from "react-router-dom";
 import { makeSutListTransactions } from "./makeSut";
 
 describe("ListTransactions", () => {
