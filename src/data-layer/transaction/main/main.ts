@@ -1,20 +1,41 @@
 import { api } from "../../../service/api";
 import {
+  TransactionData,
+  TransactionDataAPI,
+} from "../../../domain/transaction/types/global/transactions";
+
+import {
   ListTransactions,
   AddNewTransaction,
   RemoveTransaction,
   UpdateNewTransactions,
+  TotalTransactions,
+  TotalIncomingTransactions,
+  TotalOutgoingTransactions,
 } from "../use-cases";
-
-export type TransactionProps = {
-  name: string;
-  type: string;
-  amount: number;
-  category: string;
-};
 
 export class MainTransaction {
   url = `${process.env.REACT_APP_API_URL}/transactions`;
+
+  handleTotalTransactions(transactions: TransactionDataAPI[]) {
+    const totalTransactions = new TotalTransactions();
+    const total = totalTransactions.filterTotalTransactions(transactions);
+    return total;
+  }
+
+  handleTotalIncomingTransactions(transactions: TransactionDataAPI[]) {
+    const totalIncomingTransactions = new TotalIncomingTransactions();
+    const total =
+      totalIncomingTransactions.filterTotalIncomingTransactions(transactions);
+    return total;
+  }
+
+  handleTotalOutgoingTransactions(transactions: TransactionDataAPI[]) {
+    const totalOutgoingTransactions = new TotalOutgoingTransactions();
+    const total =
+      totalOutgoingTransactions.filterTotalOutgoingTransactions(transactions);
+    return total;
+  }
 
   async handleListTransactions() {
     const listTransactions = new ListTransactions(this.url, api.get);
@@ -23,7 +44,7 @@ export class MainTransaction {
     return response;
   }
 
-  async handleCreateTransaction(data: TransactionProps) {
+  async handleCreateTransaction(data: TransactionData) {
     const addNewTransaction = new AddNewTransaction(this.url, api.post);
 
     const response = await addNewTransaction.add(data);
@@ -62,7 +83,7 @@ export class MainTransaction {
     };
   }
 
-  async handleUpdateTransaction(id: string, body: TransactionProps) {
+  async handleUpdateTransaction(id: string, body: TransactionData) {
     const urlUpdate = `${this.url}/${id}`;
     const updateTransaction = new UpdateNewTransactions(urlUpdate, api.put);
     const mainSpy = jest.spyOn(updateTransaction, "put");
