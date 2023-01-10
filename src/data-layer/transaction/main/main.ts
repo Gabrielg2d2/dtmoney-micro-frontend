@@ -41,6 +41,11 @@ export class MainTransaction {
     const listTransactions = new ListTransactions(this.url, api.get);
 
     const response = await listTransactions.execute();
+
+    this.handleTotalTransactions(response.data);
+    this.handleTotalIncomingTransactions(response.data);
+    this.handleTotalOutgoingTransactions(response.data);
+
     return response;
   }
 
