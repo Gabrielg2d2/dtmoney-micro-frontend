@@ -5,7 +5,7 @@ Project is on a micro-frontend architecture with "Single-SPA" in React.
 
 #Javascript #React #Single-SPA #Micro-frontend #DDD #SOLID #System-Under-Test
 
-<a src="./doc/imgs/coverage.png" alt="image with the test coverage carried out in the project">
+<img src="./doc/imgs/coverage.png" alt="image with the test coverage carried out in the project">
 
 ## Domain
 
