@@ -12,6 +12,9 @@ module.exports = {
     "!**/domain/**",
     "!root.component.tsx",
     "!g2d2-dtmoney.tsx",
+    "!pages/**",
+    "!routes/**",
+    "!**/main.ts",
   ],
   moduleNameMapper: {
     "\\.(css)$": "identity-obj-proxy",
